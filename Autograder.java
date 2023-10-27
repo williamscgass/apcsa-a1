@@ -10,6 +10,8 @@ public class Autograder {
             assertEquals(expected, result);
             logger.writeResult(testName, numPoints, String.valueOf(expected), String.valueOf(result));
             logger.incPoints(numPoints);
+        } catch (AssertionError e) {
+            logger.writeResult(testName, 0, String.valueOf(expected), "Exception: " + e.getMessage());
         } catch (Exception e) {
             logger.writeResult(testName, 0, String.valueOf(expected), "Exception: " + e.getMessage());
         }
